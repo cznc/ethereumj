@@ -2,8 +2,11 @@ import java.text.SimpleDateFormat
 
 buildscript {
     repositories {
-        jcenter()
-        maven { url 'https://repo.spring.io/plugins-release' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/spring-plugin' }
+        gradlePluginPortal()
+        //jcenter()
+        //maven { url 'https://repo.spring.io/plugins-release' }
     }
     dependencies {
         classpath 'io.spring.gradle:propdeps-plugin:0.0.10.RELEASE'
@@ -120,17 +123,22 @@ ext {
 }
 
 dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+    testCompileOnly 'org.projectlombok:lombok:1.18.4'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.4'
+
     compile "io.netty:netty-all:4.0.30.Final"
     compile "com.madgag.spongycastle:core:${scastleVersion}" // for SHA3 and SECP256K1
     compile "com.madgag.spongycastle:prov:${scastleVersion}" // for SHA3 and SECP256K1
 
     compile "org.iq80.leveldb:leveldb:${leveldbVersion}"     // Java API wrapper around native components
 
-    compile "org.ethereum:leveldbjni-all:1.18.3"             // native leveldb components
+    compile "io.github.tronprotocol:leveldbjni-all:1.18.3"             // native leveldb components
 
-    compile "org.ethereum:rocksdbjni:5.9.2"                   // RocksDB Java API
+    compile "org.rocksdb:rocksdbjni:5.18.4"                   // RocksDB Java API
 
-    compile "org.ethereum:solcJ-all:0.4.25"                  // Solidity Compiler win/mac/linux binaries
+    compile "org.fisco-bcos:solcJ:0.6.10.0"                  // Solidity Compiler win/mac/linux binaries
 
     compile "com.google.guava:guava:24.1-jre"
 
