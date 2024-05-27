@@ -1,0 +1,31 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.ethereumj</groupId>
+  <artifactId>ethereumj</artifactId>
+  <version>3.0</version>
+  <packaging>pom</packaging>
+
+<!--  	<parent>-->
+<!--	    <groupId>org.springframework.boot</groupId>-->
+<!--	    <artifactId>spring-boot-starter-parent</artifactId>-->
+<!--	    <version>2.3.5.RELEASE</version>-->
+<!--	    <relativePath/>-->
+<!--	</parent>-->
+
+	<properties>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<slf4j.version>1.7.35</slf4j.version>
+		<leveldb.version>0.7</leveldb.version>
+		<scastle.version>1.56.0.0</scastle.version><!--1.58.0.0--><!-- Spongy Castle is a package-rename (org.bouncycastle.* to org.spongycastle.*) of Bouncy Castle intended for the Android platform. Android unfortunately ships with a stripped-down version of Bouncy Castle, which prevents easy upgrades - Spongy Castle overcomes this and provides a full, up-to-date version of the Bouncy Castle cryptographic libs.-->
+
+		<spring.version>4.3.14.RELEASE</spring.version><!-- 4.2.0.RELEASE, 4.3.7.Final -->
+		<junit.version>4.11</junit.version>
+		<spring-test.version>4.3.14.RELEASE</spring-test.version>
+	</properties>
+
+	<modules>
+		<module>ethereumj-core</module>
+	</modules>
+
+</project>
