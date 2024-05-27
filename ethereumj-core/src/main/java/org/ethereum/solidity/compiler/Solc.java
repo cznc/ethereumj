@@ -25,12 +25,14 @@ import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 
 import org.ethereum.config.SystemProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created by Anton Nashatyrev on 03.03.2016.
  */
 public class Solc {
-
+    private static final Logger logger = LoggerFactory.getLogger(Solc.class);
     private File solc = null;
 
     Solc(SystemProperties config) {
@@ -58,8 +60,9 @@ public class Solc {
     private void initBundled() throws IOException {
         File tmpDir = new File(System.getProperty("java.io.tmpdir"), "solc");
         tmpDir.mkdirs();
-
-        InputStream is = getClass().getResourceAsStream("/native/" + getOS() + "/solc/file.list");
+        String solcFilePath = "/native/ecdsa/" + getOS() + "/solc/file.list";
+        logger.debug("solcFilePath={}", solcFilePath);
+        InputStream is = getClass().getResourceAsStream(solcFilePath);
         try (Scanner scanner = new Scanner(is)) {
             while (scanner.hasNext()) {
                 String s = scanner.next();
