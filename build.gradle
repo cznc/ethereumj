@@ -1,6 +1,6 @@
 wrapper {
     gradleVersion = "5.6.2"
-    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+    distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-bin.zip"
 }
 
 allprojects {
@@ -23,7 +23,7 @@ def gitCurBranch() {
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'maven'
+    apply plugin: 'maven-publish'
 
     def config = new ConfigSlurper().parse(new File("$projectDir/src/main/resources/version.properties").toURI().toURL())
 
@@ -39,7 +39,8 @@ subprojects {
     compileTestJava.options.encoding = 'UTF-8'
 
     repositories {
-        jcenter()
-        maven { url "https://dl.bintray.com/ethereum/maven/" }
+        mavenLocal()
+        maven { url "https://maven.aliyun.com/repository/central/" }
+        mavenCentral()
     }
 }
